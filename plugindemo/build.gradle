@@ -1,0 +1,71 @@
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'maven'
+
+
+sourceSets {
+    main {
+        groovy {
+            srcDir '../plugindemo/src/main/groovy'
+        }
+
+        java {
+            srcDir "../plugindemo/src/main/java"
+        }
+
+        resources {
+            srcDir '../plugindemo/src/main/resources'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile gradleApi()
+    compile localGroovy()
+
+    compile group: 'org.ow2.asm', name: 'asm', version: '6.0'
+    compile group: 'org.ow2.asm', name: 'asm-commons', version: '6.0'
+    compile 'com.android.tools.build:gradle:3.4.2'
+    compile 'com.android.tools.lint:lint:26.4.2'
+    compile 'com.android.tools.lint:lint-api:26.4.2'
+    compile 'com.android.tools.lint:lint-checks:26.4.2'
+
+}
+
+
+repositories {
+    mavenCentral()
+
+}
+
+
+//group和version在后面使用自定义插件的时候会用到
+group = 'com.zzw.plugin'
+version = '1.0.0'
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //提交到远程服务器：
+            // repository(url: "http://www.xxx.com/repos") {
+            //    authentication(userName: "admin", password: "admin")
+            // }
+            //本地的Maven地址设置为/Users/xiaolu/Desktop/gradle_plugin
+            repository(url: uri('/Users/xiaolu/Desktop/gradle_plugin'))
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

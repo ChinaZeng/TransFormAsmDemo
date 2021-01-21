@@ -24,7 +24,7 @@ class FirstTransform extends Transform {
                 //传递给下一个
                 File dest = transformInvocation.outputProvider.getContentLocation(jarInput.name, jarInput.contentTypes,
                         jarInput.scopes, Format.JAR)
-
+                println("input:${jarInput.file}  out:${dest.path}")
                 FileUtils.copyFile(jarInput.file, dest)
             }
 
@@ -32,6 +32,7 @@ class FirstTransform extends Transform {
                 //传递给下一个
                 File dest = transformInvocation.outputProvider.getContentLocation(directoryInput.name, directoryInput.contentTypes,
                         directoryInput.scopes, Format.DIRECTORY)
+                println("input:${directoryInput.file}  out:${dest.path}")
                 FileUtils.copyDirectory(directoryInput.file, dest)
             }
         }
@@ -42,6 +43,7 @@ class FirstTransform extends Transform {
                 //传递给下一个
                 File dest =  transformInvocation.outputProvider.getContentLocation(jarInput.name, jarInput.contentTypes,
                         jarInput.scopes, Format.JAR)
+                println("input:${jarInput.file}  out:${dest.path}")
                 FileUtils.copyFile(jarInput.file, dest)
             }
 
@@ -49,6 +51,7 @@ class FirstTransform extends Transform {
                 //传递给下一个
                 File dest =   transformInvocation.outputProvider.getContentLocation(directoryInput.name, directoryInput.contentTypes,
                         directoryInput.scopes, Format.DIRECTORY)
+                println("input:${directoryInput.file}  out:${dest.path}")
                 FileUtils.copyDirectory(directoryInput.file, dest)
             }
         }

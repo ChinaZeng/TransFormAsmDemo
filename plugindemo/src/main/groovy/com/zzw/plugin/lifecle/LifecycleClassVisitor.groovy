@@ -42,6 +42,7 @@ class LifecycleClassVisitor extends ClassVisitor {
         }
         return mv
     }
+
 }
 
 
